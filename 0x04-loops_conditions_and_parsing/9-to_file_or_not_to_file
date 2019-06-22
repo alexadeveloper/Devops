@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Give information about the file
+
+nombre="holbertonschool"
+if [ -e "$nombre" ]
+then
+	echo "$nombre file exists"
+	if [ -s "$nombre" ]
+	then
+		echo "$nombre file is not empty"
+	else
+		echo "$nombre file is empty"
+	fi
+	if [ -f "$nombre" ]
+	then
+		echo "$nombre is a regular file"
+	fi
+else
+	echo "$nombre file does not exist"
+fi
