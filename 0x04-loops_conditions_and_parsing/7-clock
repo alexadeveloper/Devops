@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Displays with while and case
+
+h=0
+while [ $h -lt 13 ]
+do
+	echo "Hour: $h"
+	m=1
+	while [ $m -le 59 ]
+	do
+		echo "$m"
+		let m++
+	done
+	let h++
+done
