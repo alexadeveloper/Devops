@@ -2,7 +2,7 @@
 # Displays with while and case
 
 i=1
-while [ $i -lt 20 ]
+while [ $i -lt 21 ]
 do
 	echo "$i"
 	case "$i" in
