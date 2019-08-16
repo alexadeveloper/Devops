@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Install nginx on my server
+sudo apt-get update
+sudo apt-get -y install nginx
+cabezera="\t\tadd_header X-Served-By '$HOSTNAME';"
+sudo sed -i "31i\ $cabezera" /etc/nginx/sites-enabled/default
+sudo service nginx reload
+sudo service nginx restart
