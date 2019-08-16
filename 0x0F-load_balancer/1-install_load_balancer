@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # install proxy 
 sudo apt-get update -y
-sudo apt-get install -y haproxy=1.7\*
+sudo apt-get install -y haproxy=1.6\*
 echo "frontend 734-frontend
         bind *:80
         default_backend 734-backend
