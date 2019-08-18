@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Error puerto 80
+available="/etc/nginx/sites-available/default"
+enabled="/etc/nginx/sites-enabled/default"
+sudo cp $available $enabled
+sudo service nginx restart
+sudo pkill -o nginx
