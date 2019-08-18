@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # solve the problem with listen in port 80
-
 sudo pkill nginx
 sed -i -e 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx start
