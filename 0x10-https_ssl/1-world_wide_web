@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2086
+#  display information about subdomains
+
+domain=$1
+if [ $# -eq 2 ]
+then
+	subdomain="$2"
+else
+        subdomain='www lb-01 web-01 web-02'
+fi
+for i in $subdomain
+do
+	echo -n "The subdomain $i"
+	dig "$i.$domain" | awk 'NR == 14 {print " is a "$4 " record and points to " $5}'
+done
