@@ -33,11 +33,16 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend 734-frontend
+frontend 734-frontend http
         bind *:80
         default_backend 734-backend
 
+frontend 734-frontend https
+        bind *:443 ssl crt /etc/haproxy/ssl/jalexandrasf.tech.pem
+        default_backend 734-backend
+
 backend 734-backend
+        redirect scheme https if { hdr(Host) -i www.jalexandrasf.tech } !{ ssl_fc }
         balance roundrobin
         server 734-web-01 34.74.43.63:80 check
         server 734-web-02 35.231.32.10:80 check
