@@ -7,7 +7,7 @@ global
         user haproxy
         group haproxy
         daemon
-        
+
         # Default SSL material locations
         ca-base /etc/ssl/certs
         crt-base /etc/ssl/private
@@ -33,21 +33,11 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-        option forwardfor
-
-frontend www-http
+frontend 734-frontend
         bind *:80
-        reqadd X-Forwarded-Proto:\ http
-        default_backend backend
+        default_backend 734-backend
 
-frontend www-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.jalexandrasf.tech.pem
-        reqadd X-Forwarded-Proto:\ https
-        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-        use_backend letsencrypt-backend if letsencrypt-acl
-        default_backend backend
-
-backend www-backend
-        redirect scheme https if !{ ssl_fc }
-        server web1 34.74.43.63:80 check
-        server web2 35.231.32.10:80 check
+backend 734-backend
+        balance roundrobin
+        server 734-web-01 34.74.43.63:80 check
+        server 734-web-02 35.231.32.10:80 check
