@@ -5,7 +5,7 @@ import requests
 
 def top_ten(subreddit):
     """ returns the number of subscribers """
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     agent007 = {'User-Agent': 'alexa_developer'}
     solicitud = requests.get(url, headers=agent007, allow_redirects=False,
                              params={'limit': 10})
